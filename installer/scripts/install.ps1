@@ -9,6 +9,18 @@ $serverPaks = Join-Path $game "NemesisLD\Source\WindowsServer\NemesisLD\Content\
 $clientBin  = Join-Path $game "NemesisLD\Binaries\Win64"
 foreach ($d in $clientPaks, $serverPaks, $clientBin) { if (-not (Test-Path $d)) { throw "Folder does not exist: $d (is the game installation complete?)" } }
 
+# The game creates GameUserSettings.ini on its first start. Without that first start from Steam the
+# required runtimes (Visual C++, DirectX) may be missing, and Start Nemesis.bat bypasses Steam.
+$userSettings = Join-Path $env:LOCALAPPDATA "NemesisLD\Saved\Config\WindowsNoEditor\GameUserSettings.ini"
+if (-not (Test-Path $userSettings)) {
+    Write-Host ""
+    Write-Host "It looks like the game has never been started on this computer." -ForegroundColor Yellow
+    Write-Host "Start it ONCE normally from Steam (Steam then installs Visual C++ and DirectX)," -ForegroundColor Yellow
+    Write-Host "quit it when the main menu appears, and then run Install.bat again." -ForegroundColor Yellow
+    $answer = Read-Host "Continue anyway? (y/N)"
+    if ($answer -notmatch '^(y|yes|d|da)$') { Write-Host "Installation cancelled. Nothing was changed."; exit 0 }
+}
+
 # 1) patch paks
 Copy-Item (Join-Path $PkgDir "paks\client\zzz_NemesisLocalHost_P.pak") (Join-Path $clientPaks "zzz_NemesisLocalHost_P.pak") -Force
 Copy-Item (Join-Path $PkgDir "paks\server\zzz_NemesisLocalHost_P.pak") (Join-Path $serverPaks "zzz_NemesisLocalHost_P.pak") -Force

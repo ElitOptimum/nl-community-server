@@ -10,6 +10,7 @@ An unofficial community tool that brings **multiplayer via local hosting** back 
 
 ## For players
 
+0. Install the game through Steam and start it **once from Steam** (so Steam installs the required runtimes), then quit.
 1. Download `NemesisLocal.zip` from the [Releases](../../releases) page and extract it anywhere (e.g. the Desktop).
 2. Double-click **`Install.bat`** (once).
 3. Always start the game with **`Start Nemesis.bat`**.

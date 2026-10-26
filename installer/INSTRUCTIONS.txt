@@ -21,6 +21,9 @@ WHAT YOU NEED
 
 INSTALLATION (once)
 -------------------
+0. Install the game through Steam and start it ONCE normally from Steam
+   (Steam then installs the required extras, e.g. Visual C++ and DirectX).
+   When the main menu appears, quit the game.
 1. Open the NemesisLocal folder.
 2. Double-click  Install.bat
    - If Windows says "Windows protected your PC": click "More info", then "Run anyway".
