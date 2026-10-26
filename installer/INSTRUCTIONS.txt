@@ -1,0 +1,93 @@
+NEMESIS: LOCKDOWN - LOCAL MULTIPLAYER (without the official servers)
+=====================================================================
+
+WHAT IS THIS
+------------
+Unofficial community project, not affiliated with Awaken Realms / Inter Studio.
+A legally purchased copy of the game on Steam is required.
+
+The official game servers have been shut down, but the game itself contains
+everything needed: a complete server and a local hosting mode that was
+switched off. This package switches it on (Serbian instructions: UPUTSTVO.txt).
+Nothing is downloaded from the internet and nothing is installed into Windows.
+All changes are removed with "Uninstall.bat".
+
+WHAT YOU NEED
+-------------
+- Windows 10/11
+- Nemesis: Lockdown installed through Steam (original game, your account)
+- Steam running and logged in
+- This folder (NemesisLocal) copied anywhere on your disk, e.g. the Desktop
+
+INSTALLATION (once)
+-------------------
+1. Open the NemesisLocal folder.
+2. Double-click  Install.bat
+   - If Windows says "Windows protected your PC": click "More info", then "Run anyway".
+   - The script finds the game folder by itself. If it can't, it will ask you
+     to type the path (e.g. D:\SteamLibrary\steamapps\common\Nemesis - Lockdown).
+3. When it says DONE, close the window.
+
+STARTING THE GAME (every time)
+------------------------------
+1. Steam must be running (logged in).
+2. Double-click  Start Nemesis.bat
+   - A small black window opens (this is normal, don't close it), then the game.
+   - On the FIRST start Windows Firewall may ask about NemesisLDServer:
+     click "Allow access" (allow private networks too).
+3. Play. When you quit the game, the black window closes by itself.
+
+IMPORTANT: If you start the game directly from Steam, solo play works, but the
+multiplayer menu says "YOUR GAME IS OUTDATED". For multiplayer always use
+Start Nemesis.bat.
+
+HOW TO PLAY MULTIPLAYER
+-----------------------
+One player is the host, the others join.
+
+HOST:
+  PLAY -> MULTIPLAYER -> enter a server name -> CREATE SERVER
+  Wait about 20-30 seconds (nothing is shown, this is normal), then:
+  PLAY -> SERVERS LIST -> your server appears -> click it -> you enter the lobby.
+
+OTHER PLAYERS:
+  PLAY -> SERVERS LIST -> click the host's server -> lobby.
+  Note: the list searches for servers on the LOCAL NETWORK (same router/WiFi).
+  Players over the internet: in the lobby the host has a list of Steam friends
+  and an INVITE button; the friend accepts the invite in Steam.
+  (This method has not been tested yet.)
+
+IN THE LOBBY:
+  When everyone is in, the host clicks START GAME.
+  If the host is ALONE in the lobby, START GAME starts a solo game (same as SOLO).
+
+SOLO and TUTORIAL work normally.
+
+TROUBLESHOOTING
+---------------
+- "YOUR GAME IS OUTDATED": you didn't start the game with Start Nemesis.bat, or
+  the black window was closed. Close the game and start it again with the .bat file.
+- The server doesn't show up in SERVERS LIST: wait 30 s, switch to another tab and
+  back to SERVERS LIST. Make sure you are all on the same network and that the
+  Firewall allowed NemesisLDServer. Don't click on the empty list (there is a
+  solo game button there).
+- "Unable to create solo game": an old server was left running. Close the game and
+  start it again with the .bat file.
+- After a Steam update of the game (unlikely, the game is no longer maintained):
+  run Install.bat again.
+
+UNINSTALLING
+------------
+Double-click  Uninstall.bat  - removes all changes (two patch files, steam_appid.txt,
+one entry in Engine.ini). The game is as if nothing had been done.
+
+WHAT THE PACKAGE CONTAINS
+-------------------------
+backend\NemesisLocalBackend.exe  - a small local program that answers the game's
+                                   version check (replacement for the shut-down
+                                   game server). Runs only on your computer
+                                   (127.0.0.1:8888). On first start it creates its
+                                   own certificate in backend\cert (this is normal).
+paks\client, paks\server         - two small "patch" files for the game (they enable
+                                   local hosting and don't touch the original files).
+scripts\                         - PowerShell scripts called by the .bat files.

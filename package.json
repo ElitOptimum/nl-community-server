@@ -1,0 +1,18 @@
+{
+  "name": "nl-community-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Unofficial local backend and installer that restores multiplayer in Nemesis: Lockdown after the official servers were shut down",
+  "license": "MIT",
+  "scripts": {
+    "start": "node backend/backend.js",
+    "build:backend": "pkg backend/backend.js --targets node18-win-x64 --output build/NemesisLocalBackend.exe",
+    "build:dist": "powershell -NoProfile -ExecutionPolicy Bypass -File installer/build-dist.ps1"
+  },
+  "dependencies": {
+    "node-forge": "^1.4.0"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  }
+}

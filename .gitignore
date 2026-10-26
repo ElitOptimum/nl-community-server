@@ -1,0 +1,20 @@
+node_modules/
+build/
+dist/
+
+# the certificate is created locally on the first backend run; logs
+backend/cert/
+*.log
+
+# the patch paks contain a modified game file (© Awaken Realms / Inter Studio):
+# they are not committed, only shipped in the zip on GitHub Releases
+paks/
+*.pak
+*.uasset
+*.uexp
+*.ubulk
+
+installer/game_path.txt
+*.zip
+*.exe
+*.dll

@@ -1,0 +1,90 @@
+NEMESIS: LOCKDOWN - LOKALNI MULTIPLAYER (bez zvanicnih servera)
+=================================================================
+
+STA JE OVO
+----------
+Nezvanican projekat zajednice, nije povezan sa Awaken Realms / Inter Studio.
+Potrebna je legalno kupljena kopija igre na Steam-u.
+
+Zvanicni serveri igre su ugaseni, ali igra u sebi ima sve sto treba:
+kompletan server i rezim lokalnog hostovanja koji je bio iskljucen.
+Ovaj paket ga ukljucuje (uputstvo na engleskom: INSTRUCTIONS.txt).
+Nista se ne skida sa interneta i nista se ne instalira u Windows.
+Sve izmene se uklanjaju sa "Uninstall.bat".
+
+STA TI TREBA
+------------
+- Windows 10/11
+- Nemesis: Lockdown instaliran preko Steam-a (originalna igra, tvoj nalog)
+- Steam pokrenut i ulogovan
+- Ovaj folder (NemesisLocal) iskopiran bilo gde na disk, npr. na Desktop
+
+INSTALACIJA (jednom)
+--------------------
+1. Otvori folder NemesisLocal.
+2. Dupli klik na  Install.bat
+   - Ako Windows pita "Windows protected your PC": klikni "More info" pa "Run anyway".
+   - Skripta sama nadje folder igre. Ako ne nadje, zatrazice da upises putanju
+     (npr. D:\SteamLibrary\steamapps\common\Nemesis - Lockdown).
+3. Kad pise GOTOVO, zatvori prozor.
+
+POKRETANJE IGRE (svaki put)
+---------------------------
+1. Steam mora da radi (ulogovan).
+2. Dupli klik na  Start Nemesis.bat
+   - Otvori se mali crni prozor (to je normalno, ne zatvaraj ga) i zatim igra.
+   - Kod PRVOG pokretanja Windows Firewall moze da pita za NemesisLDServer:
+     klikni "Allow access" (dozvoli i privatne mreze).
+3. Igraj. Kad izadjes iz igre, crni prozor se sam zatvori.
+
+VAZNO: Ako igru pokrenes direktno iz Steam-a, solo igra radi, ali multiplayer
+meni javlja "YOUR GAME IS OUTDATED". Za multiplayer uvek koristi Start Nemesis.bat.
+
+KAKO SE IGRA MULTIPLAYER
+------------------------
+Jedan igrac je domacin (host), ostali se prikljucuju.
+
+DOMACIN:
+  PLAY -> MULTIPLAYER -> upisi ime servera -> CREATE SERVER
+  Sacekaj oko 20-30 sekundi (nista se ne vidi, to je normalno), zatim:
+  PLAY -> SERVERS LIST -> pojavi se tvoj server -> klikni na njega -> ulazis u lobi.
+
+OSTALI IGRACI:
+  PLAY -> SERVERS LIST -> klikni na server domacina -> lobi.
+  Napomena: lista trazi servere u LOKALNOJ MREZI (isti ruter/WiFi).
+  Igraci preko interneta: domacin u lobiju ima listu Steam prijatelja i dugme
+  INVITE; prijatelj prihvata poziv u Steam-u. (Ovaj nacin jos nije testiran.)
+
+U LOBIJU:
+  Kad su svi unutra, domacin klikne START GAME.
+  Ako je domacin SAM u lobiju, START GAME pokrece solo partiju (isto kao SOLO).
+
+SOLO i TUTORIAL rade normalno.
+
+PROBLEMI
+--------
+- "YOUR GAME IS OUTDATED": nisi pokrenuo preko Start Nemesis.bat, ili je
+  crni prozor zatvoren. Zatvori igru i pokreni ponovo preko .bat fajla.
+- Server se ne vidi u SERVERS LIST: sacekaj 30 s i predji na drugi tab pa nazad
+  na SERVERS LIST. Proveri da ste svi na istoj mrezi i da je Firewall dozvolio
+  NemesisLDServer. Ne klikci po praznoj listi (tu je dugme za solo igru).
+- "Unable to create solo game": zaostao je stari server. Zatvori igru, pokreni
+  ponovo preko .bat fajla.
+- Posle Steam azuriranja igre (malo verovatno, igra se vise ne odrzava):
+  pokreni Install.bat ponovo.
+
+UKLANJANJE
+----------
+Dupli klik na  Uninstall.bat  - brise sve izmene (dva patch fajla, steam_appid.txt,
+jednu liniju u Engine.ini). Igra je kao da nista nije radjeno.
+
+STA PAKET SADRZI
+----------------
+backend\NemesisLocalBackend.exe  - mali lokalni program koji igri odgovara na
+                                   proveru verzije (zamena za ugaseni server igre).
+                                   Radi samo na tvom racunaru (127.0.0.1:8888).
+                                   Pri prvom pokretanju sam napravi svoj sertifikat
+                                   u backend\cert (to je normalno).
+paks\client, paks\server         - dva mala "patch" fajla za igru (ukljucuju
+                                   lokalno hostovanje, ne diraju originalne fajlove).
+scripts\                         - PowerShell skripte koje .bat fajlovi pozivaju.
