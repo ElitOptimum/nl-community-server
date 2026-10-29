@@ -37,7 +37,8 @@ POKRETANJE IGRE (svaki put)
 2. Dupli klik na  Start Nemesis.bat
    - Otvori se mali crni prozor (to je normalno, ne zatvaraj ga) i zatim igra.
    - Kod PRVOG pokretanja Windows Firewall moze da pita za NemesisLDServer:
-     klikni "Allow access" (dozvoli i privatne mreze).
+     stikliraj OBE kucice (Private i Public) i klikni "Allow access".
+     Public je potreban za igru preko interneta (Radmin VPN).
 3. Igraj. Kad izadjes iz igre, crni prozor se sam zatvori.
 
 VAZNO: Ako igru pokrenes direktno iz Steam-a, solo igra radi, ali multiplayer
@@ -55,8 +56,40 @@ DOMACIN:
 OSTALI IGRACI:
   PLAY -> SERVERS LIST -> klikni na server domacina -> lobi.
   Napomena: lista trazi servere u LOKALNOJ MREZI (isti ruter/WiFi).
-  Igraci preko interneta: domacin u lobiju ima listu Steam prijatelja i dugme
-  INVITE; prijatelj prihvata poziv u Steam-u. (Ovaj nacin jos nije testiran.)
+  Ako niste u istoj kuci / na istom WiFi-ju, pogledaj sledeci odeljak.
+
+IGRA PREKO INTERNETA (Radmin VPN)
+---------------------------------
+Igra trazi servere samo u lokalnoj mrezi. Besplatan program Radmin VPN pravi
+"virtuelnu lokalnu mrezu" preko interneta, pa igra misli da ste svi na istom
+WiFi-ju. Ne treba nista podesavati na ruteru.
+
+JEDNOM (svi igraci):
+  1. Skini Radmin VPN SAMO sa zvanicnog sajta:  https://www.radmin-vpn.com
+     i instaliraj ga (Next, Next, Install).
+  2. Pokreni Radmin VPN i klikni dugme "Power" (gore levo) da bude ukljucen.
+
+DOMACIN napravi mrezu (jednom):
+  3. U Radmin VPN klikni "Create Network".
+  4. Upisi ime mreze (npr. NemesisMarko) i lozinku, klikni "Create".
+  5. Posalji ime i lozinku ostalim igracima (Discord, Viber...).
+
+OSTALI IGRACI se prikljuce (jednom):
+  6. U Radmin VPN klikni "Join Network".
+  7. Upisi ime mreze i lozinku od domacina, klikni "Join".
+  8. U Radmin prozoru treba da vidite jedni druge sa ZELENOM tackom.
+     Ako je tacka siva ili zuta, sacekaj malo ili restartuj Radmin VPN.
+
+SVAKI PUT KAD IGRATE:
+  1. SVI prvo ukljuce Radmin VPN (zelene tacke).
+  2. Tek ONDA domacin pokrene igru preko Start Nemesis.bat i napravi server
+     (PLAY -> MULTIPLAYER -> CREATE SERVER, sacekaj 30 s, udji u lobi).
+     VAZNO: ako je igra bila upaljena pre Radmina, zatvori je i pokreni ponovo.
+  3. Ostali pokrenu igru preko Start Nemesis.bat i odu na
+     PLAY -> SERVERS LIST -> klik na server domacina -> lobi.
+     Ako se server ne vidi, domacin moze u lobiju da posalje INVITE.
+
+Ako server i dalje ne moze da se vidi, proveri Windows Firewall (pogledaj PROBLEMI).
 
 U LOBIJU:
   Kad su svi unutra, domacin klikne START GAME.
@@ -71,6 +104,14 @@ PROBLEMI
 - Server se ne vidi u SERVERS LIST: sacekaj 30 s i predji na drugi tab pa nazad
   na SERVERS LIST. Proveri da ste svi na istoj mrezi i da je Firewall dozvolio
   NemesisLDServer. Ne klikci po praznoj listi (tu je dugme za solo igru).
+- Preko Radmin VPN-a server se ne vidi:
+  a) Proveri da su u Radmin prozoru svi sa ZELENOM tackom.
+  b) Domacin: zatvori igru i pokreni je ponovo (server mora da se napravi
+     POSLE ukljucivanja Radmina).
+  c) Firewall: Start -> upisi "Allow an app through Windows Firewall" -> otvori
+     -> "Change settings" -> nadji NemesisLDServer i Nemesis -> stikliraj i
+     Private i Public -> OK. (Ovo uradi i domacin i ostali igraci.)
+  d) Ako koristis drugi VPN (npr. ProtonVPN, NordVPN), iskljuci ga dok igras.
 - "Unable to create solo game": zaostao je stari server. Zatvori igru, pokreni
   ponovo preko .bat fajla.
 - Posle Steam azuriranja igre (malo verovatno, igra se vise ne odrzava):

@@ -37,7 +37,8 @@ STARTING THE GAME (every time)
 2. Double-click  Start Nemesis.bat
    - A small black window opens (this is normal, don't close it), then the game.
    - On the FIRST start Windows Firewall may ask about NemesisLDServer:
-     click "Allow access" (allow private networks too).
+     tick BOTH boxes (Private and Public) and click "Allow access".
+     Public is needed for playing over the internet (Radmin VPN).
 3. Play. When you quit the game, the black window closes by itself.
 
 IMPORTANT: If you start the game directly from Steam, solo play works, but the
@@ -56,9 +57,40 @@ HOST:
 OTHER PLAYERS:
   PLAY -> SERVERS LIST -> click the host's server -> lobby.
   Note: the list searches for servers on the LOCAL NETWORK (same router/WiFi).
-  Players over the internet: in the lobby the host has a list of Steam friends
-  and an INVITE button; the friend accepts the invite in Steam.
-  (This method has not been tested yet.)
+  If you are not in the same house / on the same WiFi, see the next section.
+
+PLAYING OVER THE INTERNET (Radmin VPN)
+--------------------------------------
+The game only looks for servers on the local network. The free program Radmin VPN
+creates a "virtual local network" over the internet, so the game thinks you are
+all on the same WiFi. Nothing needs to be set up on the router.
+
+ONCE (all players):
+  1. Download Radmin VPN ONLY from the official site:  https://www.radmin-vpn.com
+     and install it (Next, Next, Install).
+  2. Start Radmin VPN and click the "Power" button (top left) so it is on.
+
+The HOST creates a network (once):
+  3. In Radmin VPN click "Create Network".
+  4. Enter a network name (e.g. NemesisMark) and a password, click "Create".
+  5. Send the name and password to the other players (Discord, WhatsApp...).
+
+The OTHER PLAYERS join (once):
+  6. In Radmin VPN click "Join Network".
+  7. Enter the host's network name and password, click "Join".
+  8. In the Radmin window you should see each other with a GREEN dot.
+     If the dot is grey or yellow, wait a bit or restart Radmin VPN.
+
+EVERY TIME YOU PLAY:
+  1. EVERYONE turns Radmin VPN on first (green dots).
+  2. ONLY THEN the host starts the game with Start Nemesis.bat and creates the
+     server (PLAY -> MULTIPLAYER -> CREATE SERVER, wait 30 s, enter the lobby).
+     IMPORTANT: if the game was running before Radmin, close it and start it again.
+  3. The others start the game with Start Nemesis.bat and go to
+     PLAY -> SERVERS LIST -> click the host's server -> lobby.
+     If the server doesn't show up, the host can send an INVITE from the lobby.
+
+If the server still can't be seen, check Windows Firewall (see TROUBLESHOOTING).
 
 IN THE LOBBY:
   When everyone is in, the host clicks START GAME.
@@ -74,6 +106,14 @@ TROUBLESHOOTING
   back to SERVERS LIST. Make sure you are all on the same network and that the
   Firewall allowed NemesisLDServer. Don't click on the empty list (there is a
   solo game button there).
+- Over Radmin VPN the server doesn't show up:
+  a) Check that everyone has a GREEN dot in the Radmin window.
+  b) Host: close the game and start it again (the server must be created
+     AFTER Radmin was turned on).
+  c) Firewall: Start -> type "Allow an app through Windows Firewall" -> open it
+     -> "Change settings" -> find NemesisLDServer and Nemesis -> tick both
+     Private and Public -> OK. (Both the host and the other players do this.)
+  d) If you use another VPN (e.g. ProtonVPN, NordVPN), turn it off while playing.
 - "Unable to create solo game": an old server was left running. Close the game and
   start it again with the .bat file.
 - After a Steam update of the game (unlikely, the game is no longer maintained):
